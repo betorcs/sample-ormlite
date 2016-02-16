@@ -16,8 +16,10 @@ public class Person implements Parcelable {
 
     @DatabaseField(generatedId = true)
     private long id;
+
     @DatabaseField(canBeNull = false)
     private String name;
+
     @DatabaseField
     private int age;
 
@@ -27,6 +29,30 @@ public class Person implements Parcelable {
         id = in.readLong();
         name = in.readString();
         age = in.readInt();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public static final Creator<Person> CREATOR = new Creator<Person>() {
@@ -53,27 +79,4 @@ public class Person implements Parcelable {
         parcel.writeInt(age);
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 }
